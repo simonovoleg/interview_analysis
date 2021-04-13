@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse a linked list</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    class LinkNode {
+        prevPointer = null
+        nextPointer = null;
+        value = null;
+
+        constructor(value) {
+            this.value = value;
+        }
+
+    }
+
+    class LinkedList {
+        head = null;
+        tail = null;
+        size = 0;
+
+        isEmpty() {
+            return this.size === 0;
+        }
+
+        constructor(value) {
+            if (value != null) {
+                this.insertNode(value);
+            }
+        }
+
+        insertNode(value) {
+            if (this.head == null) {
+                let node  = new LinkNode(value);
+                this.head = node;
+                this.tail = node;
+            } else {
+                let temp  = new LinkNode(value);
+                temp.prevPointer = this.tail;
+                this.tail.nextPointer = temp;
+                this.tail = temp;
+            }
+            this.size++;
+        }
+
+        getHead() {
+            return this.head;
+        }
+    }       
+
+    const originalList = [1,2,3,4,5,6,7,8,9,0];
+    const len = originalList.length;
+    let ll = new LinkedList();
+    
+    for (value of originalList) {
+        ll.insertNode(value);
+    };
+
+    let node = ll.head;
+    for (let i = 0; i < len; i++) {
+        if (i < len - 1) {
+            document.write(`${node.value}, `);
+            node = node.nextPointer;
+        } else {
+            document.write(`${node.value}`);
+        }
+    };
+
+    /*** YOUR CODE HERE ***/
+    /* Reverse Linked List */
+    
+</script>
